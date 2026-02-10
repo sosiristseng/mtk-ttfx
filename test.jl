@@ -1,8 +1,6 @@
 using ModelingToolkit
 using ModelingToolkit: t_nounits as t, D_nounits as D
 using OrdinaryDiffEq
-using Profile
-using PProf
 
 function main()
     @parameters τ = 3.0 # parameters
