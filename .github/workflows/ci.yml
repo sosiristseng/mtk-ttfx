@@ -32,7 +32,6 @@ jobs:
         uses: julia-actions/setup-julia@v2
         with:
           version: ${{ matrix.julia-ver }}
-          arch: ${{ runner.arch }}
           show-versioninfo: 'true'
       - name: Install Julia packages
         shell: julia --color=yes {0}
