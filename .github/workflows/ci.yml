@@ -24,8 +24,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        julia-ver: ["1.10", "1.12"]
-        mtk_ver: ["10", "11"]
+        julia-ver: ['1.10', '1.12']
+        mtk_ver: ['10', '11']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,14 +40,14 @@ jobs:
         uses: actions/cache@v5
         with:
           path: ~/.julia
-          key: ${{ runner.os }}-julia${{ matrix.julia-ver }}-mtk${{matrix.mtk_ver}}-${{ github.sha }}
+          key: ${{ runner.os }}-julia${{ matrix.julia-ver }}-mtk${{ matrix.mtk_ver }}-${{ github.run_number }}
           restore-keys: |
-            ${{ runner.os }}-julia${{ matrix.julia-ver }}-mtk${{matrix.mtk_ver}}-
+            ${{ runner.os }}-julia${{ matrix.julia-ver }}-mtk${{ matrix.mtk_ver }}-
       - name: Install Julia packages
         shell: julia --color=yes {0}
         run: |
           using Pkg
-          Pkg.add([PackageSpec(name="ModelingToolkit", version="${{matrix.mtk_ver}}"), PackageSpec("OrdinaryDiffEq")], preserve=PRESERVE_NONE)
+          Pkg.add([PackageSpec(name="ModelingToolkit", version="${{ matrix.mtk_ver }}"), PackageSpec("OrdinaryDiffEq")], preserve=PRESERVE_NONE)
           Pkg.status(PKGMODE_MANIFEST)
       - name: Execute notebook
         run: julia test.jl
