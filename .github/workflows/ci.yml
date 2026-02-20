@@ -16,7 +16,7 @@ concurrency:
 env:
   JULIA_CI: 'true'
   JULIA_NUM_THREADS: 'auto'
-  JULIA_CPU_TARGET: 'generic;icelake-server,clone_all;znver3,clone_all'
+  JULIA_CPU_TARGET: 'generic;znver3,clone_all'
   OPENBLAS_NUM_THREADS: '1'
 
 jobs:
@@ -34,7 +34,6 @@ jobs:
         uses: julia-actions/setup-julia@v2
         with:
           version: ${{ matrix.julia-ver }}
-          arch: ${{ runner.arch }}
           show-versioninfo: 'true'
       - name: Cache Julia packages
         uses: actions/cache@v5
