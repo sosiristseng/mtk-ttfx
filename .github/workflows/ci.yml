@@ -48,5 +48,5 @@ jobs:
           Pkg.Registry.update()
           Pkg.add([PackageSpec(name="ModelingToolkit", version="${{ matrix.mtk_ver }}"), PackageSpec("OrdinaryDiffEq")], preserve=PRESERVE_NONE)
           Pkg.status(PKGMODE_MANIFEST)
-      - name: Execute notebook
+      - name: Execute code
         run: julia test.jl

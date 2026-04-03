@@ -13,7 +13,7 @@ function main()
         i1 ~ 10 * (t > 30) * (t < 40),
         i2 ~ 10 * (t > 10) * (t < 20)
     ]
-    @time "Build system" @named sys = System(eqs, t) |> mtkcompile
+    @time "Build system" @mtkcompile sys = System(eqs, t)
     @time "Build problem" prob = ODEProblem(sys, [], (0.0, 50.0))
     @time "Solve problem" sol = solve(prob, Tsit5(), tstops=[10.0, 20.0, 30.0, 40.0])
 end
