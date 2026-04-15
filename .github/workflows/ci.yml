@@ -6,8 +6,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  schedule:
-    - cron: '0 0 * * *'
+  # schedule:
+  #   - cron: '0 0 * * *'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -21,10 +21,6 @@ env:
 
 jobs:
   execute:
-    strategy:
-      fail-fast: false
-      matrix:
-        julia-ver: ['1.10', '1.12', 'pre']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,14 +28,13 @@ jobs:
       - name: Setup Julia
         uses: julia-actions/setup-julia@v2
         with:
-          version: ${{ matrix.julia-ver }}
+          version: '1'
           show-versioninfo: 'true'
       - name: Install Julia packages
-        shell: julia --color=yes {0}
+        shell: julia --color=yes  --project=@. {0}
         run: |
           using Pkg
           Pkg.Registry.update()
-          Pkg.add(["ModelingToolkit", "OrdinaryDiffEq", "Catalyst", "Plots"])
-          Pkg.status(PKGMODE_MANIFEST)
+          Pkg.instantiate()
       - name: Execute code
         run: julia test.jl
