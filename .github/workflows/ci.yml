@@ -37,4 +37,4 @@ jobs:
           Pkg.Registry.update()
           Pkg.instantiate()
       - name: Execute code
-        run: julia test.jl
+        run: julia --project=@. test.jl
