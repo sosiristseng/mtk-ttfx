@@ -39,7 +39,7 @@ jobs:
         run: |
           using Pkg
           Pkg.Registry.update()
-          Pkg.add([ModelingToolkit", "OrdinaryDiffEq", "Catalyst", "Plots"])
+          Pkg.add(["ModelingToolkit", "OrdinaryDiffEq", "Catalyst", "Plots"])
           Pkg.status(PKGMODE_MANIFEST)
       - name: Execute code
         run: julia test.jl
