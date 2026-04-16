@@ -1,6 +1,8 @@
 using ModelingToolkit
 using ModelingToolkit: t_nounits as t, D_nounits as D
 using OrdinaryDiffEq
+using Plots
+Plots.default(size=(800, 600))
 
 function hh_sys(; name=:hh)
     exprel(x) = x / expm1(x)
