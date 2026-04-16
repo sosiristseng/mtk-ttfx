@@ -38,6 +38,7 @@ tend = 100.0
 @time "Build problem" prob = ODEProblem(sys, [], tend)
 @time "Solve problem" sol = solve(prob, TRBDF2())
 
+@info "using Plots"
 using Plots
 Plots.default(size=(800, 600))
 @time "Build system" @mtkcompile sys = hh_sys()
