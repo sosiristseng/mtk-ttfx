@@ -17,10 +17,12 @@ env:
   JULIA_CI: 'true'
   JULIA_NUM_THREADS: 'auto'
   OPENBLAS_NUM_THREADS: '1'
-  JULIA_CPU_TARGET: 'generic;icelake-server,clone_all;znver3,clone_all'
 
 jobs:
   execute:
+    permissions:
+      actions: write
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,11 +32,14 @@ jobs:
         with:
           version: '1'
           show-versioninfo: 'true'
+      - name: Cache Julia packages
+        uses: julia-actions/setup-julia@v2
       - name: Install Julia packages
-        shell: julia --color=yes  --project=@. {0}
+        shell: julia --color=yes --project=@. {0}
         run: |
           using Pkg
           Pkg.Registry.update()
           Pkg.instantiate()
+          Pkg.gc()
       - name: Execute code
         run: julia --project=@. test.jl
