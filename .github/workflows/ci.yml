@@ -38,6 +38,7 @@ jobs:
         shell: julia --color=yes --project=@. {0}
         run: |
           using Pkg
+          Pkg.resolve()
           Pkg.instantiate()
           Pkg.gc()
       - name: Execute code
