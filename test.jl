@@ -1,6 +1,8 @@
+using Startup
 using ModelingToolkit
 using ModelingToolkit: t_nounits as t, D_nounits as D
 using OrdinaryDiffEq
+using Plots
 
 function hh_sys(; name=:hh)
     exprel(x) = x / expm1(x)
@@ -38,8 +40,8 @@ tend = 100.0
 @time "Build problem" prob = ODEProblem(sys, [], tend)
 @time "Solve problem" sol = solve(prob, TRBDF2())
 
-@info "using Plots"
-using Plots
+@info "using CSV, DataFrames"
+using CSV, DataFrames
 @time "Build system" @mtkcompile sys = hh_sys()
 @time "Build problem" prob = ODEProblem(sys, [], tend)
 @time "Solve problem" sol = solve(prob, TRBDF2())
