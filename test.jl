@@ -1,11 +1,12 @@
 using Startup
 using ModelingToolkit
-using ModelingToolkit: t_nounits as t, D_nounits as D
 using OrdinaryDiffEq
 using Plots
 
 function hh_sys(; name=:hh)
     exprel(x) = x / expm1(x)
+    @independent_variables t
+    D = Differential(t)
     @discretes iStim(t)=0.0
     @parameters E_N=55 E_K=-72 E_LEAK=-49 G_N_BAR=120 G_K_BAR=36 G_LEAK=0.3 C_M=1
     @variables v(t)=-59.8977 m(t)=0.0536 h(t)=0.5925 n(t)=0.3192 iNa(t) iK(t) iLeak(t) ma(t) mb(t) ha(t) hb(t) na(t) nb(t)
