@@ -1,7 +1,6 @@
 using Startup
 using ModelingToolkit
-using OrdinaryDiffEq
-using Plots
+using OrdinaryDiffEqSDIRK
 
 function hh_sys(; name=:hh)
     exprel(x) = x / expm1(x)
@@ -42,7 +41,7 @@ tend = 100.0
 @time "Solve problem" sol = solve(prob, TRBDF2())
 
 @info "using CSV, DataFrames"
-using CSV, DataFrames
+using CSV, DataFrames, Plots
 @time "Build system" @mtkcompile sys = hh_sys()
 @time "Build problem" prob = ODEProblem(sys, [], tend)
 @time "Solve problem" sol = solve(prob, TRBDF2())
