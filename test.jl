@@ -1,4 +1,3 @@
-using Startup
 using ModelingToolkit
 using OrdinaryDiffEqSDIRK
 

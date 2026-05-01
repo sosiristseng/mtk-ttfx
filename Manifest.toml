@@ -2,7 +2,7 @@
 
 julia_version = "1.13.0-rc1"
 manifest_format = "2.1"
-project_hash = "96a7f653b6974894dc57822d8446fdcfe9c0119c"
+project_hash = "a37d682086e0ae92f37f06a290fc58a4b397e898"
 
 [[deps.ADTypes]]
 git-tree-sha1 = "bbc22a9a08a0ef6460041086d8a7b27940ed4ffd"
@@ -2258,12 +2258,6 @@ git-tree-sha1 = "235b1f9d287bbf34083b3d0829343a7942c0ad1c"
 registries = "General"
 uuid = "0c0c59c1-dc5f-42e9-9a8b-b5dc384a6cd1"
 version = "0.3.0"
-
-[[deps.Startup]]
-deps = ["CSV", "DataFrames", "ForwardDiff", "ModelingToolkit", "OrdinaryDiffEq", "Plots", "PrecompileTools"]
-path = "Startup"
-uuid = "96ca4998-d908-41b4-903a-701739569951"
-version = "0.1.0"
 
 [[deps.StateSelection]]
 deps = ["BipartiteGraphs", "DocStringExtensions", "FindFirstFunctions", "Graphs", "LinearAlgebra", "OrderedCollections", "Setfield", "SparseArrays"]
