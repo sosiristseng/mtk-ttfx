@@ -23,6 +23,10 @@ jobs:
     permissions:
       actions: write
       contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        julia-ver: ['1.12', '~1.13.0-0']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,7 +34,7 @@ jobs:
       - name: Setup Julia
         uses: julia-actions/setup-julia@v3
         with:
-          version: '1'
+          version: ${{ matrix.julia-ver }}
           show-versioninfo: 'true'
       - name: Cache Julia packages
         uses: julia-actions/cache@v3
