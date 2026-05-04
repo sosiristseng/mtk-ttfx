@@ -1,5 +1,5 @@
 using ModelingToolkit
-using OrdinaryDiffEqSDIRK
+using DifferentialEquations
 
 function hh_sys(; name=:hh)
     exprel(x) = x / expm1(x)
@@ -34,13 +34,14 @@ function hh_sys(; name=:hh)
     return sys
 end
 
+@info "Before loading other packages"
 tend = 100.0
 @time "Build system" @mtkcompile sys = hh_sys()
 @time "Build problem" prob = ODEProblem(sys, [], tend)
-@time "Solve problem" sol = solve(prob, TRBDF2())
+@time "Solve problem" sol = solve(prob, Tsit5())
 
-@info "using CSV, DataFrames"
+@info "using CSV, DataFrames, Plots"
 using CSV, DataFrames, Plots
 @time "Build system" @mtkcompile sys = hh_sys()
 @time "Build problem" prob = ODEProblem(sys, [], tend)
-@time "Solve problem" sol = solve(prob, TRBDF2())
+@time "Solve problem" sol = solve(prob, Tsit5())

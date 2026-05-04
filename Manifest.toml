@@ -2,7 +2,7 @@
 
 julia_version = "1.13.0-rc1"
 manifest_format = "2.1"
-project_hash = "a37d682086e0ae92f37f06a290fc58a4b397e898"
+project_hash = "e30e5cdb14ededf7478fc35f1c0ad571a54ec834"
 
 [[deps.ADTypes]]
 git-tree-sha1 = "bbc22a9a08a0ef6460041086d8a7b27940ed4ffd"
@@ -489,6 +489,13 @@ git-tree-sha1 = "23163d55f885173722d1e4cf0f6110cdbaf7e272"
 registries = "General"
 uuid = "b552c78f-8df3-52c6-915a-8e097449b14b"
 version = "1.15.1"
+
+[[deps.DifferentialEquations]]
+deps = ["OrdinaryDiffEq", "Reexport", "SciMLBase"]
+git-tree-sha1 = "076a5e999d38ffbba860d4c1ba49828855b65c14"
+registries = "General"
+uuid = "0c46a032-eb83-5123-abaf-570d42b7fbaa"
+version = "8.0.0"
 
 [[deps.DifferentiationInterface]]
 deps = ["ADTypes", "LinearAlgebra"]
@@ -2371,10 +2378,10 @@ version = "1.1.0"
 
 [[deps.SymbolicUtils]]
 deps = ["AbstractTrees", "ArrayInterface", "Combinatorics", "ConstructionBase", "DataStructures", "Dictionaries", "DocStringExtensions", "DynamicPolynomials", "EnumX", "ExproniconLite", "Graphs", "LinearAlgebra", "MacroTools", "Moshi", "MultivariatePolynomials", "MutableArithmetics", "NaNMath", "PrecompileTools", "ReadOnlyArrays", "Setfield", "SparseArrays", "SpecialFunctions", "StaticArraysCore", "SymbolicIndexingInterface", "TaskLocalValues", "TermInterface", "WeakCacheSets"]
-git-tree-sha1 = "94289f54ee5eb8feccaad382b80c4fd43d99b7ab"
+git-tree-sha1 = "eda3976d610de0b1d4091c76368b5d05f9d3d4a6"
 registries = "General"
 uuid = "d1185830-fcd6-423d-90d6-eec64667417b"
-version = "4.25.2"
+version = "4.26.1"
 
     [deps.SymbolicUtils.extensions]
     SymbolicUtilsChainRulesCoreExt = "ChainRulesCore"
