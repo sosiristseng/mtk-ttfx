@@ -19,7 +19,6 @@ env:
   JULIA_NUM_THREADS: 'auto'
   OPENBLAS_NUM_THREADS: '1'
 
-
 jobs:
   execute:
     permissions:
