@@ -15,7 +15,6 @@ concurrency:
 
 env:
   JULIA_CI: 'true'
-  # JULIA_CPU_TARGET: 'generic;icelake-server,clone_all;znver3,clone_all'
   JULIA_NUM_THREADS: 'auto'
   OPENBLAS_NUM_THREADS: '1'
 
@@ -38,6 +37,9 @@ jobs:
         with:
           version: ${{ matrix.julia-ver }}
           show-versioninfo: 'true'
+      - name: Set Julia CPU target (x64)
+        if: ${{ runner.arch == 'X64' }}
+        run: echo 'JULIA_CPU_TARGET=generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)' >> $GITHUB_ENV
       - name: Cache Julia packages
         uses: julia-actions/cache@v3
       - name: Install Julia packages
@@ -45,5 +47,6 @@ jobs:
         run: |
           using Pkg
           Pkg.instantiate()
+          Pkg.precompile()
       - name: Execute code
         run: julia --project=@. test.jl
